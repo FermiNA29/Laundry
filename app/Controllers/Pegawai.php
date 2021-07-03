@@ -43,7 +43,10 @@ class Pegawai extends BaseController
     {
         $db      = \Config\Database::connect();
         $builder = $db->table('pegawai');
+        $builder->select('pegawai.id,pegawai.username,pegawai.nama,pegawai.alamat,pegawai.level,role.nama as role');
+        $builder->join('role', 'pegawai.level = role.id');
         $pegawai   = $builder->get()->getResult();
+        // dd($pegawai);
         $data = [
             'pegawai' => $pegawai
         ];
@@ -52,7 +55,13 @@ class Pegawai extends BaseController
 
     public function create()
     {
-        return view('/pegawai/form');
+        $db      = \Config\Database::connect();
+        $builder = $db->table('role');
+        $role   = $builder->get()->getResult();
+        $data = [
+            'role' => $role
+        ];
+        return view('/pegawai/form', $data);
     }
 
     public function save()

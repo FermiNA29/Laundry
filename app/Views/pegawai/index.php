@@ -34,7 +34,7 @@
                                 <td><?= $user->username; ?></td>
                                 <td><?= $user->nama; ?></td>
                                 <td><?= $user->alamat; ?></td>
-                                <td><?= $user->level; ?></td>
+                                <td><?= $user->role; ?></td>
                                 <td>
                                     <a href="/pegawai/edit/<?= $user->id; ?>" class="btn btn-primary">Edit</a>
                                     <?php

@@ -38,8 +38,9 @@
                         <label for="exampleFormControlSelect1">Level</label>
                         <select class="form-control" name="level" id="exampleFormControlSelect1">
                             <option selected>Pilih...</option>
-                            <option value="1">Admin</option>
-                            <option value="2">Pegawai</option>
+                            <?php foreach ($role as $r) : ?>
+                                <option value="<?= $r->id; ?>"><?= $r->nama; ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
