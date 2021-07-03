@@ -56,6 +56,13 @@ $routes->get('/paket/edit/(:num)', 'Pegawai::edit/$1');
 $routes->post('/pegawai/update/(:num)', 'Pegawai::update/$1');
 $routes->delete('/pegawai/hapus/(:num)', 'Pegawai::delete/$1');
 
+$routes->get('/role', 'Role::index');
+$routes->get('/role/tambah', 'Role::create');
+$routes->post('/role/simpan', 'Role::save');
+$routes->get('/role/edit/(:num)', 'Role::edit/$1');
+$routes->post('/role/update/(:num)', 'Role::update/$1');
+$routes->delete('/role/hapus/(:num)', 'Role::delete/$1');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
