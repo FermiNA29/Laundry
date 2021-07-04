@@ -1,21 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+<?= $this->extend('/layouts/admin/master'); ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Document</title>
-</head>
+<?= $this->section('content'); ?>
+<!-- form -->
 
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <h1>Edit Data Pegawai</h1>
+<!-- form -->
 
-                <!-- form -->
+<div class="container-fluid">
+
+    <!-- DataTales Example -->
+    <div class="col-md-7">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold">Manage Account Detail</h6>
+            </div>
+            <div class="card-body">
                 <form action="/pegawai/update/<?= $user["id"]; ?>" method="POST">
                     <?= csrf_field(); ?>
                     <div class="form-group">
@@ -38,16 +36,18 @@
                         <label for="exampleFormControlSelect1">Level</label>
                         <select class="form-control" name="level" id="exampleFormControlSelect1">
                             <option selected>Pilih...</option>
-                            <option value="1" <?= $user["level"] == 1 ? "selected" : ""; ?>>Admin</option>
-                            <option value="2" <?= $user["level"] == 2 ? "selected" : ""; ?>>Pegawai</option>
+                            <?php foreach ($role as $r) : ?>
+                                <option value="<?= $r->id; ?>" <?= $user["level"] == $r->id ? "selected" : ""; ?>><?= $r->nama; ?></option>
+                            <?php endforeach; ?>
+
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
-                <!-- form -->
             </div>
         </div>
     </div>
-</body>
 
-</html>
+
+</div>
+<?= $this->endsection(); ?>

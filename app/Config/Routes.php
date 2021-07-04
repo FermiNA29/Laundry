@@ -49,6 +49,7 @@ $routes->delete('/paket/hapus/(:num)', 'Paket::delete/$1');
 $routes->get('/login', 'Pegawai::login');
 $routes->post('/login/cek', 'Pegawai::check');
 
+$routes->get('/dashboard/admin', 'Pegawai::dash');
 $routes->get('/pegawai', 'Pegawai::index');
 $routes->get('/pegawai/tambah', 'Pegawai::create');
 $routes->post('/pegawai/simpan', 'Pegawai::save');
@@ -62,6 +63,12 @@ $routes->post('/role/simpan', 'Role::save');
 $routes->get('/role/edit/(:num)', 'Role::edit/$1');
 $routes->post('/role/update/(:num)', 'Role::update/$1');
 $routes->delete('/role/hapus/(:num)', 'Role::delete/$1');
+$routes->get('/master', function () {
+	return view('/layouts/admin/master');
+});
+$routes->get('/edit', function () {
+	return view('/role/tampilan');
+});
 
 /*
  * --------------------------------------------------------------------

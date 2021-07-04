@@ -1,11 +1,7 @@
 <?= $this->extend('/layouts/admin/master'); ?>
 
 <?= $this->section('content'); ?>
-<h1>Edit Data Role</h1>
 
-<!-- form -->
-
-<!-- form -->
 
 <div class="container-fluid">
 

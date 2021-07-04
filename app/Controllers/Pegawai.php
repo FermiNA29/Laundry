@@ -80,11 +80,15 @@ class Pegawai extends BaseController
 
     public function edit($id)
     {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('role');
+        $role   = $builder->get()->getResult();
         $pegawaiModel = new PegawaiModel();
         $user = $pegawaiModel->where('id', $id)
             ->first();
         $data = [
-            'user' => $user
+            'user' => $user,
+            'role' => $role
         ];
         return view('/pegawai/edit', $data);
     }
@@ -110,5 +114,22 @@ class Pegawai extends BaseController
         $pegawaiModel->delete($id);
 
         return redirect()->to('/pegawai');
+    }
+
+    public function dash()
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('pegawai');
+        $pegawai   = $builder->get()->getResult();
+        $admin = $builder->where('level', 1)->get()->getResult();
+
+        $builder2 = $db->table('pelanggan');
+        $pelanggan   = $builder2->get()->getResult();
+        $data = [
+            'admin' => $admin,
+            'pegawai' => $pegawai,
+            'pelanggan' => $pelanggan
+        ];
+        return view('/pegawai/dashboard', $data);
     }
 }
