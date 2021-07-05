@@ -64,7 +64,7 @@ $routes->get('/role/edit/(:num)', 'Role::edit/$1');
 $routes->post('/role/update/(:num)', 'Role::update/$1');
 $routes->delete('/role/hapus/(:num)', 'Role::delete/$1');
 $routes->get('/master', function () {
-	return view('/layouts/admin/master');
+	return view('/layouts/pegawai/master');
 });
 $routes->get('/edit', function () {
 	return view('/role/tampilan');
