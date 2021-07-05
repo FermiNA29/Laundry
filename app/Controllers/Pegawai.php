@@ -10,7 +10,7 @@ class Pegawai extends BaseController
 {
     public function login()
     {
-        return view('/pegawai/login');
+        return view('/pegawai/login2');
     }
 
     public function check()
@@ -22,9 +22,9 @@ class Pegawai extends BaseController
         if ($user == true) {
             if ($user["level"] == 1) {
                 echo "<script>
-                    alert('Login Berhasil');
-                  </script>";
-                return redirect()->to('/pegawai');
+                            alert('login berhasil')
+                        </script>";
+                return redirect()->to('/dashboard/admin');
             } else if ($user["level"] == 2) {
                 echo "<script>
                     alert('Login Berhasil');

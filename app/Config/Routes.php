@@ -48,6 +48,9 @@ $routes->delete('/paket/hapus/(:num)', 'Paket::delete/$1');
 
 $routes->get('/login', 'Pegawai::login');
 $routes->post('/login/cek', 'Pegawai::check');
+$routes->get('/login2', function () {
+	return view('/pegawai/login2');
+});
 
 $routes->get('/dashboard/admin', 'Pegawai::dash');
 $routes->get('/pegawai', 'Pegawai::index');
