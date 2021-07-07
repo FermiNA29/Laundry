@@ -11,18 +11,42 @@ class Role extends BaseController
 {
     public function index()
     {
-        $db      = \Config\Database::connect();
-        $builder = $db->table('role');
-        $role   = $builder->get()->getResult();
-        $data = [
-            'role' => $role
-        ];
-        return view('/role/index', $data);
+        $session = \Config\Services::session();
+
+        if (!$session->get('username') == null) {
+            if ($session->get('level') == 1) {
+                $db      = \Config\Database::connect();
+                $builder = $db->table('role');
+                $role   = $builder->get()->getResult();
+                $data = [
+                    'role' => $role,
+                    'nama' => $session->get('nama')
+                ];
+                return view('/role/index', $data);
+            } else {
+                return redirect()->to('/pelanggan');
+            }
+        } else {
+            return redirect()->to('/login');
+        }
     }
 
     public function create()
     {
-        return view('/role/form');
+        $session = \Config\Services::session();
+
+        if (!$session->get('username') == null) {
+            if ($session->get('level') == 1) {
+                $data = [
+                    'nama' => $session->get('nama')
+                ];
+                return view('/role/form', $data);
+            } else {
+                return redirect()->to('/pelanggan');
+            }
+        } else {
+            return redirect()->to('/login');
+        }
     }
 
     public function save()
@@ -37,13 +61,24 @@ class Role extends BaseController
 
     public function edit($id)
     {
-        $roleModel = new RoleModel();
-        $user = $roleModel->where('id', $id)
-            ->first();
-        $data = [
-            'user' => $user
-        ];
-        return view('/role/edit', $data);
+        $session = \Config\Services::session();
+
+        if (!$session->get('username') == null) {
+            if ($session->get('level') == 1) {
+                $roleModel = new RoleModel();
+                $user = $roleModel->where('id', $id)
+                    ->first();
+                $data = [
+                    'user' => $user,
+                    'nama' => $session->get('nama')
+                ];
+                return view('/role/edit', $data);
+            } else {
+                return redirect()->to('/pelanggan');
+            }
+        } else {
+            return redirect()->to('/login');
+        }
     }
 
     public function update($id)

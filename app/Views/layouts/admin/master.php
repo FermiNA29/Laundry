@@ -77,7 +77,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="img-profile rounded-circle mr-3" src="<?= base_url() ?>/laundry/assets/img/undraw_profile.svg">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Selamat Datang Nana!</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Selamat Datang <?= $this->renderSection('name'); ?>!</span>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -138,7 +138,7 @@
                 <div class="modal-body">Yakin ingin keluar?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="/login">Logout</a>
+                    <a class="btn btn-primary" href="/logout">Logout</a>
                 </div>
             </div>
         </div>

@@ -1,5 +1,9 @@
 <?= $this->extend('/layouts/admin/master'); ?>
 
+<?= $this->section('name'); ?>
+<?= $nama; ?>
+<?= $this->endsection(); ?>
+
 <?= $this->section('content'); ?>
 <h1>Edit Data Role</h1>
 

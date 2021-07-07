@@ -1,5 +1,8 @@
 <?= $this->extend('/layouts/pegawai/master'); ?>
 
+<?= $this->section('name'); ?>
+<?= $nama; ?>
+<?= $this->endsection(); ?>
 
 <?= $this->section('content'); ?>
 

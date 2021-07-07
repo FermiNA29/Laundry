@@ -9,25 +9,39 @@ class Pelanggan extends BaseController
 {
     public function index()
     {
-        $db      = \Config\Database::connect();
-        $builder = $db->table('pelanggan');
-        $builder->select('pelanggan.id,pelanggan.nama,pelanggan.berat,paket.paket,paket.harga,pelanggan.tglMasuk,pelanggan.tglKeluar,pelanggan.status');
-        $builder->join('paket', 'pelanggan.idPaket = paket.id');
-        $pelanggan = $builder->get()->getResult();
-        $data = [
-            'pelanggan' => $pelanggan
-        ];
-        return view('/pelanggan/index', $data);
+        $session = \Config\Services::session();
+
+        if (!$session->get('username') == null) {
+            $db      = \Config\Database::connect();
+            $builder = $db->table('pelanggan');
+            $builder->select('pelanggan.id,pelanggan.nama,pelanggan.berat,paket.paket,paket.harga,pelanggan.tglMasuk,pelanggan.tglKeluar,pelanggan.status');
+            $builder->join('paket', 'pelanggan.idPaket = paket.id');
+            $pelanggan = $builder->get()->getResult();
+            $data = [
+                'pelanggan' => $pelanggan,
+                'nama' => $session->get('nama')
+            ];
+            return view('/pelanggan/index', $data);
+        } else {
+            return redirect()->to('/login');
+        }
     }
 
     public function create()
     {
-        $paketModel = new PaketModel();
-        $paket = $paketModel->findAll();
-        $data = [
-            'paket' => $paket
-        ];
-        return view('/pelanggan/form', $data);
+        $session = \Config\Services::session();
+
+        if (!$session->get('username') == null) {
+            $paketModel = new PaketModel();
+            $paket = $paketModel->findAll();
+            $data = [
+                'paket' => $paket,
+                'nama' => $session->get('nama')
+            ];
+            return view('/pelanggan/form', $data);
+        } else {
+            return redirect()->to('/login');
+        }
     }
 
     public function save()
@@ -47,16 +61,23 @@ class Pelanggan extends BaseController
 
     public function edit($id)
     {
-        $pelangganModel = new PelangganModel();
-        $paketModel = new PaketModel();
-        $user = $pelangganModel->where('id', $id)
-            ->first();
-        $paket = $paketModel->findAll();
-        $data = [
-            'user' => $user,
-            'paket' => $paket
-        ];
-        return view('/pelanggan/edit', $data);
+        $session = \Config\Services::session();
+
+        if (!$session->get('username') == null) {
+            $pelangganModel = new PelangganModel();
+            $paketModel = new PaketModel();
+            $user = $pelangganModel->where('id', $id)
+                ->first();
+            $paket = $paketModel->findAll();
+            $data = [
+                'user' => $user,
+                'paket' => $paket,
+                'nama' => $session->get('nama')
+            ];
+            return view('/pelanggan/edit', $data);
+        } else {
+            return redirect()->to('/login');
+        }
     }
 
     public function update($id)

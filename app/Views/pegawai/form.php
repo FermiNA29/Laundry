@@ -1,6 +1,8 @@
 <?= $this->extend('/layouts/admin/master'); ?>
 
-
+<?= $this->section('name'); ?>
+<?= $nama; ?>
+<?= $this->endsection(); ?>
 
 <?= $this->section('content'); ?>
 <!-- form -->

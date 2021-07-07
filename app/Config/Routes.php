@@ -60,6 +60,8 @@ $routes->get('/paket/edit/(:num)', 'Pegawai::edit/$1');
 $routes->post('/pegawai/update/(:num)', 'Pegawai::update/$1');
 $routes->delete('/pegawai/hapus/(:num)', 'Pegawai::delete/$1');
 
+$routes->get('/logout', 'Pegawai::destroy');
+
 $routes->get('/role', 'Role::index');
 $routes->get('/role/tambah', 'Role::create');
 $routes->post('/role/simpan', 'Role::save');

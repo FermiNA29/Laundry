@@ -1,5 +1,8 @@
 <?= $this->extend('/layouts/admin/master'); ?>
 
+<?= $this->section('name'); ?>
+<?= $nama; ?>
+<?= $this->endsection(); ?>
 
 <?= $this->section('content'); ?>
 <a href="/role/tambah" class="btn btn-primary">Tambah</a>

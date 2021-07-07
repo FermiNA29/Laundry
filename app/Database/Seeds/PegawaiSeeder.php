@@ -21,7 +21,7 @@ class PegawaiSeeder extends Seeder
                 'password'    => sha1('kasir1'),
                 'nama' => 'kasir1',
                 'alamat' => 'kasir1',
-                'level' => 1
+                'level' => 2
             ]
         ];
 
