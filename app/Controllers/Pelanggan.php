@@ -5,21 +5,33 @@ namespace App\Controllers;
 use App\Models\PelangganModel;
 use App\Models\PaketModel;
 
+use function PHPSTORM_META\map;
+
 class Pelanggan extends BaseController
 {
     public function index()
     {
+        $pelangganModel = new PelangganModel();
         $session = \Config\Services::session();
 
         if (!$session->get('username') == null) {
-            $db      = \Config\Database::connect();
-            $builder = $db->table('pelanggan');
-            $builder->select('pelanggan.id,pelanggan.nama,pelanggan.berat,paket.paket,paket.harga,pelanggan.tglMasuk,pelanggan.tglKeluar,pelanggan.status');
-            $builder->join('paket', 'pelanggan.idPaket = paket.id');
-            $pelanggan = $builder->get()->getResult();
+
+            $pager = \Config\Services::pager();
+            $currentPage = $this->request->getVar('page_pelanggan') ? $this->request->getVar('page_pelanggan') : 1;
+
+
+            $keyword = $this->request->getVar('keyword');
+            if ($keyword) {
+                $pelanggan = $pelangganModel->join('paket', 'pelanggan.idPaket = paket.id')->like('nama', $keyword)->paginate(1, 'pelanggan');
+            } else {
+                $pelanggan = $pelangganModel->join('paket', 'pelanggan.idPaket = paket.id')->paginate(1, 'pelanggan');
+            }
+
             $data = [
                 'pelanggan' => $pelanggan,
-                'nama' => $session->get('nama')
+                'nama' => $session->get('nama'),
+                'pager' => $pelangganModel->pager,
+                'currentPage' => $currentPage
             ];
             return view('/pelanggan/index', $data);
         } else {
