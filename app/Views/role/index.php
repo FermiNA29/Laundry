@@ -28,7 +28,7 @@
                         <?php foreach ($role as $r) : ?>
                             <tr>
                                 <th scope="row"><?= $i; ?></th>
-                                <td><?= $r->nama; ?></td>
+                                <td><?= $r->level; ?></td>
                                 <td>
                                     <a href="/role/edit/<?= $r->id; ?>" class="btn btn-primary">Edit</a>
                                     <form action="/role/hapus/<?php echo $r->id ?>" method="POST" class="d-inline">

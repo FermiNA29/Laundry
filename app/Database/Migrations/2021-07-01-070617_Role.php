@@ -15,7 +15,7 @@ class Role extends Migration
 				'unsigned'       => true,
 				'auto_increment' => true,
 			],
-			'nama'       => [
+			'level'       => [
 				'type'       => 'VARCHAR',
 				'constraint' => '50',
 			],

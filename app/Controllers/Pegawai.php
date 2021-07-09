@@ -50,19 +50,32 @@ class Pegawai extends BaseController
 
     public function index()
     {
+        $pegawaiModel = new PegawaiModel();
         $session = \Config\Services::session();
 
         if (!$session->get('username') == null) {
             if ($session->get('level') == 1) {
                 $db      = \Config\Database::connect();
-                $builder = $db->table('pegawai');
-                $builder->select('pegawai.id,pegawai.username,pegawai.nama,pegawai.alamat,pegawai.level,role.nama as role');
-                $builder->join('role', 'pegawai.level = role.id');
-                $pegawai   = $builder->get()->getResult();
+                $pager = \Config\Services::pager();
+
+                $currentPage = $this->request->getVar('page_pegawai') ? $this->request->getVar('page_pegawai') : 1;
+                $keyword = $this->request->getVar('keyword');
+                // $builder = $db->table('pegawai');
+                // $builder->select('pegawai.id,pegawai.username,pegawai.nama,pegawai.alamat,pegawai.level,role.nama as role');
+                // $builder->join('role', 'pegawai.level = role.id');
+                // $pegawai   = $builder->get()->getResult();
+                if ($keyword) {
+                    $pegawai = $pegawaiModel->join('role', 'pegawai.level = role.id')->like('nama', $keyword)->paginate(1, 'pegawai');
+                } else {
+                    $pegawai = $pegawaiModel->join('role', 'pegawai.level = role.id')->paginate(1, 'pegawai');
+                }
+
                 // dd($pegawai);
                 $data = [
                     'pegawai' => $pegawai,
-                    'nama' => $session->get('nama')
+                    'nama' => $session->get('nama'),
+                    'pager' => $pegawaiModel->pager,
+                    'currentPage' => $currentPage
                 ];
                 return view('/pegawai/index', $data);
             } else {

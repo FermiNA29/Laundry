@@ -7,5 +7,5 @@ use CodeIgniter\Model;
 class RoleModel extends Model
 {
     protected $table      = 'role';
-    protected $allowedFields = ['nama'];
+    protected $allowedFields = ['level'];
 }

@@ -24,7 +24,7 @@
                     <?= csrf_field(); ?>
                     <div class="form-group">
                         <label for="nama">Role</label>
-                        <input type="text" name="nama" value="<?= $user["nama"]; ?>" class="form-control" id="nama" placeholder="Masukan Role">
+                        <input type="text" name="level" value="<?= $user["level"]; ?>" class="form-control" id="nama" placeholder="Masukan Role">
                     </div>
                     <button type="submit" class="btn btn-primary">Ubah</button>
                 </form>

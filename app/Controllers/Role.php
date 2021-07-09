@@ -53,7 +53,7 @@ class Role extends BaseController
     {
         $roleModel = new RoleModel();
         $roleModel->save([
-            'nama' => $this->request->getVar('nama')
+            'level' => $this->request->getVar('level')
         ]);
 
         return redirect()->to('/role');
@@ -85,7 +85,7 @@ class Role extends BaseController
     {
         $roleModel = new RoleModel();
         $data = [
-            'nama' => $this->request->getVar('nama')
+            'level' => $this->request->getVar('level')
         ];
         $roleModel->update($id, $data);
 
