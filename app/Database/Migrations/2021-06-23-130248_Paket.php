@@ -9,7 +9,7 @@ class Paket extends Migration
 	public function up()
 	{
 		$this->forge->addField([
-			'id'          => [
+			'idPaket'          => [
 				'type'           => 'INT',
 				'constraint'     => 11,
 				'unsigned'       => true,

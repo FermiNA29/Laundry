@@ -39,7 +39,7 @@
                         <select class="form-control" name="level" id="exampleFormControlSelect1">
                             <option selected>Pilih...</option>
                             <?php foreach ($role as $r) : ?>
-                                <option value="<?= $r->id; ?>"><?= $r->level; ?></option>
+                                <option value="<?= $r->idRole; ?>"><?= $r->level; ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>

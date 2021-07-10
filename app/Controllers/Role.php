@@ -66,7 +66,7 @@ class Role extends BaseController
         if (!$session->get('username') == null) {
             if ($session->get('level') == 1) {
                 $roleModel = new RoleModel();
-                $user = $roleModel->where('id', $id)
+                $user = $roleModel->where('idRole', $id)
                     ->first();
                 $data = [
                     'user' => $user,

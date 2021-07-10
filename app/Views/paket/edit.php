@@ -16,7 +16,7 @@
                 <h6 class="m-0 font-weight-bold">Ubah Data Paket</h6>
             </div>
             <div class="card-body">
-                <form action="/paket/update/<?= $paket["id"]; ?>" method="POST">
+                <form action="/paket/update/<?= $paket["idPaket"]; ?>" method="POST">
                     <?= csrf_field(); ?>
                     <div class="form-group">
                         <label for="paket">Jenis Paket</label>

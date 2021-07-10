@@ -41,7 +41,7 @@
                         <select class="form-control" name="level" id="exampleFormControlSelect1">
                             <option selected>Pilih...</option>
                             <?php foreach ($role as $r) : ?>
-                                <option value="<?= $r->id; ?>" <?= $user["level"] == $r->id ? "selected" : ""; ?>><?= $r->nama; ?></option>
+                                <option value="<?= $r->idRole; ?>" <?= $user["level"] == $r->idRole ? "selected" : ""; ?>><?= $r->level; ?></option>
                             <?php endforeach; ?>
 
                         </select>

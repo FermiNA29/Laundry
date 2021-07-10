@@ -5,17 +5,21 @@
 <?= $this->endsection(); ?>
 
 <?= $this->section('content'); ?>
-<a href="/paket/tambah" class="btn btn-primary">Tambah</a>
+
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold">Manage Account</h6>
+        <h6 class="m-0 font-weight-bold">Manage Package</h6>
     </div>
 
     <div class="container">
         <div class="row">
+            <div class="col-6">
+                <a href="/paket/tambah" class="btn btn-primary mt-2">Tambah</a>
+            </div>
+        </div>
+        <div class="row">
             <div class="col">
-                <!-- table -->
-                <table class="table table-striped">
+                <table class="table table-bordered mt-2">
                     <thead>
                         <tr>
                             <th scope="col">No</th>
@@ -32,8 +36,8 @@
                                 <td><?= $p->paket; ?></td>
                                 <td><?= $p->harga; ?></td>
                                 <td>
-                                    <a href="/paket/edit/<?php echo $p->id ?>" class="btn btn-info">Edit</a>
-                                    <form action="/paket/hapus/<?php echo $p->id ?>" method="POST" class="d-inline">
+                                    <a href="/paket/edit/<?php echo $p->idPaket ?>" class="btn btn-info">Edit</a>
+                                    <form action="/paket/hapus/<?php echo $p->idPaket ?>" method="POST" class="d-inline">
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <button type="submit" class="btn btn-danger">Delete</button>
@@ -44,12 +48,9 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-                <!-- table -->
-
             </div>
         </div>
     </div>
-
 </div>
 <?= $this->endsection(); ?>
 

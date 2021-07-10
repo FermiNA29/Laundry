@@ -65,7 +65,7 @@ class Paket extends BaseController
         if (!$session->get('username') == null) {
             if ($session->get('level') == 1) {
                 $paketModel = new PaketModel();
-                $paket = $paketModel->where('id', $id)
+                $paket = $paketModel->where('idPaket', $id)
                     ->first();
                 $data = [
                     'paket' => $paket,

@@ -34,7 +34,7 @@
                     <select class="custom-select my-1 mr-sm-2" name="paket" id="inlineFormCustomSelectPref">
                         <option selected>Pilih Paket</option>
                         <?php foreach ($paket as $p) : ?>
-                            <option value="<?= $p['id'] ?>"><?= $p['paket'] ?></option>
+                            <option value="<?= $p['idPaket'] ?>"><?= $p['paket'] ?></option>
                         <?php endforeach ?>
                     </select>
                     <div class="form-group">

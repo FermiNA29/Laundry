@@ -20,15 +20,16 @@ class Pegawai extends BaseController
         $user = $pegawaiModel->where('username', $_POST["username"])
             ->where('password', sha1($_POST["password"]))
             ->first();
-        $newData = [
-            'username' => $user["username"],
-            'password' => $user["password"],
-            'nama' => $user["nama"],
-            'alamat' => $user["alamat"],
-            'level' => $user["level"]
-        ];
-        $session->set($newData);
+
         if ($user == true) {
+            $newData = [
+                'username' => $user["username"],
+                'password' => $user["password"],
+                'nama' => $user["nama"],
+                'alamat' => $user["alamat"],
+                'level' => $user["level"]
+            ];
+            $session->set($newData);
             if ($user["level"] == 1) {
                 echo "<script>
                             alert('login berhasil')
@@ -42,8 +43,13 @@ class Pegawai extends BaseController
             }
         } else {
             echo "<script>
-                    alert('Login Gagal');
+                    alert('Username/Password salah!!!');
                   </script>";
+            $error = "Usename/Password salah";
+            $data = [
+                'error' => $error
+            ];
+            session()->setFlashdata('error', 'username atau password salah'); //membuat pesan kesalahan
             return redirect()->to('/login');
         }
     }
@@ -55,19 +61,23 @@ class Pegawai extends BaseController
 
         if (!$session->get('username') == null) {
             if ($session->get('level') == 1) {
-                $db      = \Config\Database::connect();
+
                 $pager = \Config\Services::pager();
 
                 $currentPage = $this->request->getVar('page_pegawai') ? $this->request->getVar('page_pegawai') : 1;
                 $keyword = $this->request->getVar('keyword');
+                // $db      = \Config\Database::connect();
                 // $builder = $db->table('pegawai');
-                // $builder->select('pegawai.id,pegawai.username,pegawai.nama,pegawai.alamat,pegawai.level,role.nama as role');
+                // $builder->select('pegawai.id,pegawai.username,pegawai.nama,pegawai.alamat,pegawai.level,role.level');
                 // $builder->join('role', 'pegawai.level = role.id');
                 // $pegawai   = $builder->get()->getResult();
+                // dd($pegawai);
+
                 if ($keyword) {
-                    $pegawai = $pegawaiModel->join('role', 'pegawai.level = role.id')->like('nama', $keyword)->paginate(1, 'pegawai');
+                    $pegawai = $pegawaiModel->join('role', 'pegawai.level = role.id')->like('nama', $keyword)->paginate(6, 'pegawai');
                 } else {
-                    $pegawai = $pegawaiModel->join('role', 'pegawai.level = role.id')->paginate(1, 'pegawai');
+                    $pegawai = $pegawaiModel->join('role', 'pegawai.level = role.idRole')->paginate(6, 'pegawai');
+                    // dd($pegawai);
                 }
 
                 // dd($pegawai);

@@ -33,11 +33,19 @@
                             <form action="/login/cek" method="POST">
                                 <?= csrf_field(); ?>
                                 <div class="input-group mb-3">
-                                    <input type="text" name="username" class="form-control" placeholder="Email">
+                                    <input type="text" name="username" class="form-control" placeholder="Username">
                                 </div>
                                 <div class="input-group mb-3">
                                     <input type="password" name="password" class="form-control" placeholder="Password">
                                 </div>
+                                <?php
+                                if (!empty(session()->getFlashdata('error'))) {
+                                    echo '<div class="alert alert-danger" role="alert">
+                                             ' . session()->getFlashdata('error') . '
+                                          </div>';
+                                }
+                                ?>
+
                                 <button type="submit" class="btn btn-primary w-100">Masuk!</button>
                                 <!-- <a href="user/index.html" class="btn btn-primary w-100">Masuk!</a> -->
                             </form>

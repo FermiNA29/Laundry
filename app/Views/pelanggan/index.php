@@ -6,7 +6,7 @@
 
 <?= $this->section('content'); ?>
 
-<div class="card shadow mb-4">
+<!-- <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold">Catatan Terakhir</h6>
     </div>
@@ -67,7 +67,7 @@
             </table>
         </div>
     </div>
-</div>
+</div> -->
 <!-- table -->
 
 <div class="card shadow mb-4">
@@ -104,7 +104,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $i = 1 + (1 * ($currentPage - 1)); ?>
+                        <?php $i = 1 + (6 * ($currentPage - 1)); ?>
                         <?php foreach ($pelanggan as $dat) : ?>
                             <tr>
                                 <th scope="row"><?= $i; ?></th>
