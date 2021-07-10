@@ -31,7 +31,10 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+// $routes->get('/', 'Home::index');
+$routes->get('/', 'Pegawai::landing');
+$routes->get('/contact', 'Pegawai::contact');
+$routes->get('/about', 'Pegawai::about');
 $routes->get('/pelanggan', 'Pelanggan::index');
 $routes->get('/pelanggan/tambah', 'Pelanggan::create');
 $routes->post('/pelanggan/simpan', 'Pelanggan::save');

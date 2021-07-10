@@ -24,7 +24,7 @@
     </li>
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item active">
+    <li class="nav-item">
         <a class="nav-link" href="/pelanggan">
             <i class="fas fa-fw fa-table"></i>
             <span>Lihat Catatan Terakhir</span></a>
@@ -38,11 +38,11 @@
     </li>
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
+    <!-- <li class="nav-item">
         <a class="nav-link" href="konfirmasi-pesanan.html">
             <i class="fas fa-fw fa-table"></i>
             <span>Konfirmasi Pesanan</span></a>
-    </li>
+    </li> -->
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

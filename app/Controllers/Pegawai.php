@@ -8,6 +8,21 @@ use App\Models\PegawaiModel;
 
 class Pegawai extends BaseController
 {
+    public function landing()
+    {
+        return view('/pegawai/landingPage');
+    }
+
+    public function contact()
+    {
+        return view('/pegawai/contact');
+    }
+
+    public function about()
+    {
+        return view('/pegawai/about');
+    }
+
     public function login()
     {
         return view('/pegawai/login2');

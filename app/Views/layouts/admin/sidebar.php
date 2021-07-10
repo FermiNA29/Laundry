@@ -17,7 +17,7 @@
     </div>
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
+    <li class="nav-item active">
         <a class="nav-link" href="/dashboard/admin">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard Admin</span></a>
@@ -27,19 +27,19 @@
     <li class="nav-item active">
         <a class="nav-link" href="/pegawai">
             <i class="fas fa-fw fa-table"></i>
-            <span>Manage Account</span></a>
+            <span>Manajemen Akun</span></a>
     </li>
 
     <li class="nav-item active">
         <a class="nav-link" href="/role">
             <i class="fas fa-fw fa-table"></i>
-            <span>Manage Role</span></a>
+            <span>Manajemen Role</span></a>
     </li>
 
     <li class="nav-item active">
         <a class="nav-link" href="/paket">
             <i class="fas fa-fw fa-table"></i>
-            <span>Manage Package</span></a>
+            <span>Manajemen Paket</span></a>
     </li>
 
     <!-- Divider -->

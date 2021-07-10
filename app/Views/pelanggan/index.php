@@ -111,8 +111,40 @@
                                 <td><?= $dat['nama']; ?></td>
                                 <td><?= $dat['berat']; ?></td>
                                 <td><?= $dat['paket']; ?></td>
-                                <td><?= $dat['tglMasuk']; ?></td>
-                                <td><?= $dat['tglKeluar']; ?></td>
+                                <td>
+                                    <?php
+                                    $pecah = explode("-", $dat['tglMasuk']);
+                                    $tglMasuk = [];
+
+                                    for ($a = count($pecah) - 1; $a >= 0; $a--) {
+                                        array_push($tglMasuk, $pecah[$a]);
+                                    }
+                                    for ($a = 0; $a <= count($tglMasuk) - 1; $a++) {
+                                        if ($a == count($tglMasuk) - 1) {
+                                            echo $tglMasuk[$a];
+                                        } else {
+                                            echo $tglMasuk[$a] . "-";
+                                        }
+                                    }
+                                    ?>
+                                </td>
+                                <td>
+                                    <?php
+                                    $pecah = explode("-", $dat['tglKeluar']);
+                                    $tglKeluar = [];
+
+                                    for ($b = count($pecah) - 1; $b >= 0; $b--) {
+                                        array_push($tglKeluar, $pecah[$b]);
+                                    }
+                                    for ($b = 0; $b <= count($tglKeluar) - 1; $b++) {
+                                        if ($b == count($tglKeluar) - 1) {
+                                            echo $tglKeluar[$b];
+                                        } else {
+                                            echo $tglKeluar[$b] . "-";
+                                        }
+                                    }
+                                    ?>
+                                </td>
                                 <td>Rp. <?= $dat['berat'] * $dat['harga']; ?></td>
                                 <td><?= $dat['status'] == 0 ?  "Belum diambil" :  "Diambil"; ?></td>
                                 <td>
