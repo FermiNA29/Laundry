@@ -22,7 +22,7 @@ class Pelanggan extends BaseController
 
             $keyword = $this->request->getVar('keyword');
             if ($keyword) {
-                $pelanggan = $pelangganModel->join('paket', 'pelanggan.idPaket = paket.id')->like('nama', $keyword)->paginate(6, 'pelanggan');
+                $pelanggan = $pelangganModel->join('paket', 'pelanggan.idPaket = paket.idPaket')->like('nama', $keyword)->paginate(6, 'pelanggan');
             } else {
                 $pelanggan = $pelangganModel->join('paket', 'pelanggan.idPaket = paket.idPaket')->paginate(6, 'pelanggan');
             }
